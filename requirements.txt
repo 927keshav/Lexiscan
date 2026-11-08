@@ -1,0 +1,8 @@
+# Root requirements.txt — aggregates all team dependencies
+flask
+werkzeug
+pytesseract
+PyMuPDF
+Pillow
+spacy
+fpdf2

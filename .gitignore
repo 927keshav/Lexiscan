@@ -1,0 +1,32 @@
+# Virtual environment
+venv/
+.venv/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# NER trained models (regenerated via train_ner.py)
+3_nlp_engine/models/
+
+# IDE
+.vscode/
+.idea/
+
+# Environment
+.env
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Temp files
+*.tmp
+temp_uploads/
+
+# Spec file
+lexiscan_spec.txt

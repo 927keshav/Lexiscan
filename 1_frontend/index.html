@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LexiScan Auto — Legal Contract Entity Extractor</title>
+    <meta name="description" content="Upload legal PDFs and extract entities like parties, dates, amounts, and termination clauses using AI-powered NLP.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header id="app-header">
+        <div class="header-content">
+            <div class="logo">
+                <span class="logo-icon">⚖️</span>
+                <h1>LexiScan <span class="accent">Auto</span></h1>
+            </div>
+            <p class="tagline">AI-Powered Legal Contract Entity Extractor</p>
+        </div>
+        <div class="header-status">
+            <span id="status-dot" class="status-dot"></span>
+            <span id="status-text" class="status-text">Checking...</span>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="app-main">
+
+        <!-- Upload Section -->
+        <section id="upload-section" class="card glass">
+            <h2>📄 Upload Contract</h2>
+            <p class="card-desc">Drag & drop a legal PDF or click to browse. We'll extract parties, dates, amounts, and termination clauses.</p>
+
+            <div id="drop-zone" class="drop-zone">
+                <div class="drop-zone-content">
+                    <span class="drop-icon">📁</span>
+                    <p class="drop-text">Drag & drop your PDF here</p>
+                    <p class="drop-subtext">or click to browse files</p>
+                </div>
+                <input type="file" id="file-input" accept=".pdf" hidden>
+            </div>
+
+            <div id="file-info" class="file-info hidden">
+                <span class="file-icon">📑</span>
+                <span id="file-name" class="file-name"></span>
+                <button id="clear-file" class="btn-clear" title="Remove file">✕</button>
+            </div>
+
+            <button id="extract-btn" class="btn-primary" disabled>
+                <span class="btn-text">Extract Entities</span>
+                <span class="btn-loader hidden"></span>
+            </button>
+        </section>
+
+        <!-- Results Section -->
+        <section id="results-section" class="hidden">
+            <h2 class="results-title">📊 Extracted Entities</h2>
+
+            <div class="results-grid">
+                <!-- Parties -->
+                <div class="result-card card-parties">
+                    <div class="result-header">
+                        <span class="result-icon">🏢</span>
+                        <h3>Parties</h3>
+                        <span id="parties-count" class="result-count">0</span>
+                    </div>
+                    <ul id="parties-list" class="result-list"></ul>
+                </div>
+
+                <!-- Dates -->
+                <div class="result-card card-dates">
+                    <div class="result-header">
+                        <span class="result-icon">📅</span>
+                        <h3>Dates</h3>
+                        <span id="dates-count" class="result-count">0</span>
+                    </div>
+                    <ul id="dates-list" class="result-list"></ul>
+                </div>
+
+                <!-- Dollar Amounts -->
+                <div class="result-card card-amounts">
+                    <div class="result-header">
+                        <span class="result-icon">💰</span>
+                        <h3>Dollar Amounts</h3>
+                        <span id="amounts-count" class="result-count">0</span>
+                    </div>
+                    <ul id="amounts-list" class="result-list"></ul>
+                </div>
+
+                <!-- Termination Clauses -->
+                <div class="result-card card-clauses">
+                    <div class="result-header">
+                        <span class="result-icon">📜</span>
+                        <h3>Termination Clauses</h3>
+                        <span id="clauses-count" class="result-count">0</span>
+                    </div>
+                    <ul id="clauses-list" class="result-list"></ul>
+                </div>
+            </div>
+
+            <!-- Raw JSON Toggle -->
+            <div class="json-section">
+                <button id="toggle-json" class="btn-secondary">Show Raw JSON</button>
+                <pre id="json-output" class="json-block hidden"></pre>
+            </div>
+        </section>
+
+        <!-- Error Section -->
+        <div id="error-section" class="error-card hidden">
+            <span class="error-icon">⚠️</span>
+            <p id="error-message"></p>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer id="app-footer">
+        <p>LexiScan Auto &mdash; NLP Pipeline: OCR → NER → Postprocessing → JSON</p>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
